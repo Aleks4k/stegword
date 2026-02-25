@@ -4,6 +4,8 @@
 # Clojure CLI cache
 .cpcache/
 .cpache/
+.lsp/
+.clj-kondo/
 # Build
 target/
 out/

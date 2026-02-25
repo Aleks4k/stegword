@@ -10,7 +10,7 @@
         decrypt-btn (doto (s/button :text "Decrypt")
                       (.setFont big))
         root (s/vertical-panel
-               :border 25
+               :border 20
                :items [(s/config! encrypt-btn :preferred-size [320 :by 90])
                        (s/config! decrypt-btn :preferred-size [320 :by 90])])
         frame (s/frame
