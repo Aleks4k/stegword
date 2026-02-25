@@ -1,0 +1,3 @@
+{:deps
+ {seesaw/seesaw {:mvn/version "1.5.0"}}
+ }

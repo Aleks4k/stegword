@@ -1,0 +1,10 @@
+# IntelliJ
+.idea/
+*.iml
+# Clojure CLI cache
+.cpcache/
+.cpache/
+# Build
+target/
+out/
+classes/
