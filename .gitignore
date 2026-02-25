@@ -1,12 +1,18 @@
-# IntelliJ
-.idea/
-*.iml
+# VS Code
+.vscode/
 # Clojure CLI cache
 .cpcache/
 .cpache/
+#REPL
+.nrepl-port
+.repl-port
+# Calva / LSP / Lint
 .lsp/
 .clj-kondo/
+.calva/
 # Build
 target/
 out/
 classes/
+# Logs
+*.log
