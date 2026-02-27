@@ -15,7 +15,7 @@
     (with-open [stream (FileInputStream. path)]
       (let [bytes (byte-array 8)]
         (.read stream bytes)
-        (= (map #(bit-and % 0xFF) bytes)
+        (= (map #(bit-and % 0xFF) bytes) ;(bit-and -119 0xFF) pretvara signed byte u unsigned vrednost. To moramo da radimo zato što Java koristi signed byte.
            png-signature)))
     (catch Exception _
       false)))
