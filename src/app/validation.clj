@@ -1,4 +1,5 @@
 (ns app.validation
+  (:require [clojure.string :as str])
   (:import [java.io FileInputStream]))
 (defn valid-password? [pw]
   (and (string? pw)
@@ -17,3 +18,6 @@
            png-signature)))
     (catch Exception _
       false)))
+(defn valid-message? [msg]
+  (and (string? msg)
+       (not (str/blank? msg))))

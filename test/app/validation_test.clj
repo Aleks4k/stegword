@@ -22,3 +22,12 @@
     (t/is (not (v/png-file? "test/images/unknown.jpg")))
     )
   )
+(t/deftest valid-message-test
+  (t/testing "Correct messages"
+    (t/is (v/valid-message? "Hello world"))
+    (t/is (v/valid-message? "A"))
+    (t/is (v/valid-message? "Message with whitespaces and numbers 123")))
+  (t/testing "Incorrect messages"
+    (t/is (not (v/valid-message? "")))
+    (t/is (not (v/valid-message? "   ")))
+    (t/is (not (v/valid-message? nil)))))
