@@ -21,4 +21,4 @@ jobs:
         with:
           cli: latest
       - name: Run tests
-        run: clj -A:test -M -m app.test-runner
+        run: clojure -A:test -M -m app.test-runner
