@@ -16,5 +16,3 @@ out/
 classes/
 # Logs
 *.log
-# Test images
-test/images/
