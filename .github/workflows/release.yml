@@ -1,0 +1,56 @@
+name: Release
+
+on:
+  workflow_run:
+    workflows: ["CI"]
+    types: [completed]
+    branches: [main]
+
+jobs:
+  release:
+    name: Build jar and create release
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout exact tested commit
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.workflow_run.head_sha }}
+
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+
+      - name: Set up Clojure CLI
+        uses: DeLaGuardo/setup-clojure@13.4
+        with:
+          cli: latest
+
+      - name: Build uberjar
+        run: clj -T:build uber
+
+      - name: Create source zip
+        run: |
+          mkdir -p dist
+          git archive --format=zip --output=dist/stegword-source.zip ${{ github.event.workflow_run.head_sha }}
+
+      - name: Create tag name
+        id: tag
+        shell: bash
+        run: echo "tag=release-$(date +'%Y%m%d-%H%M%S')" >> "$GITHUB_OUTPUT"
+
+      - name: Create GitHub release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh release create "${{ steps.tag.outputs.tag }}" \
+            target/*-standalone.jar \
+            dist/stegword-source.zip \
+            --title "${{ steps.tag.outputs.tag }}" \
+            --generate-notes \
+            --target "${{ github.event.workflow_run.head_sha }}"
