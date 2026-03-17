@@ -11,7 +11,7 @@
 ;; Max value that can fit into an unsigned 32-bit integer
 (def ^:private max-unsigned-32-bit-value 4294967295)
 ;; ------------------------------------------------------------
-;; UI helper used by actions 
+;; UI helper used by actions
 ;; ------------------------------------------------------------
 (defn- user-confirmed-encryption?
   "Show a confirmation dialog telling the user how much of the image capacity will be used."
