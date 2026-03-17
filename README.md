@@ -9,10 +9,10 @@ Stegword is a student project focused on combining two concepts:
 - **cryptography**, to ensure that hidden message remains unreadable without the correct password
 - **steganography**, to hide existence of encrypted payload inside an image
 
-After choosing a PNG file and defining a password, the application automatically "packs" your message into a new, encrypted image.
+After choosing a PNG file and defining a password, the application automatically "packs" your message into a new, encrypted image.  
 This application also supports extracting messages from previously processed images using same password that was used for encryption.
 
-The focus of this project is complete **data confidentiality**.
+The focus of this project is complete **data confidentiality**.  
 Even assuming that the attacker notices the changes in the image, without the correct password the content remains absolutely inaccessible.
 
 ---
@@ -84,7 +84,7 @@ Total header size: **21 bytes = 168 bits**
 ### 5. Steganographic Embedding
 The header is written linearly into the first RGB channel slots of the image.
 
-The encrypted payload is then written bit by bit into pseudo-randomly chosen pixel channels.
+The encrypted payload is then written bit by bit into pseudo-randomly chosen pixel channels.  
 The random selection depends on the password-derived position key, meaning that without the correct password, reconstructing the payload order is significantly harder.
 
 Only the **least significant bit (LSB)** of RGB channels is modified.
@@ -250,5 +250,5 @@ This project is considered a functional student-project prototype, not a product
 ## Author
 
 **Aleksa Čavić**  
-Master Student of Faculty of Organizational Sciences
+Master Student of Faculty of Organizational Sciences  
 Software Engineering and Artificial Intelligence
